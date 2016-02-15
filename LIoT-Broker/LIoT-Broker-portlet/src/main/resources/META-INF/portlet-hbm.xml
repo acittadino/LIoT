@@ -1,0 +1,58 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping default-lazy="false" auto-import="false">
+	<import class="it.acsoftware.brokerportlet.model.Broker" />
+	<import class="it.acsoftware.brokerportlet.model.BrokerMessageListener" />
+	<import class="it.acsoftware.brokerportlet.model.BrokersManager" />
+	<class name="it.acsoftware.brokerportlet.model.impl.BrokerImpl" table="LiOT_Broker">
+		<cache usage="read-write" />
+		<id name="brokerId" type="long">
+			<generator class="assigned" />
+		</id>
+		<property name="groupId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		<property name="companyId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		<property name="userId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		<property name="userName" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="createDate" type="org.hibernate.type.TimestampType" />
+		<property name="modifiedDate" type="org.hibernate.type.TimestampType" />
+		<property name="name" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="protocol" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="url" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="port" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="description" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="type" type="com.liferay.portal.dao.orm.hibernate.StringType" column="type_" />
+		<property name="connectionUsername" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="connectionPassword" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="topics" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="customProps" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="sslEnabled" type="com.liferay.portal.dao.orm.hibernate.BooleanType" />
+		<property name="sslSecret" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="sslCertificateUUid" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="startAtStartup" type="com.liferay.portal.dao.orm.hibernate.BooleanType" />
+		<property name="mqttClientId" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="mqttQos" type="com.liferay.portal.dao.orm.hibernate.IntegerType" />
+		<property name="mqttCleanSession" type="com.liferay.portal.dao.orm.hibernate.BooleanType" />
+		<property name="kafkaZookeeperHost" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="kafkaThreadsPerTopic" type="com.liferay.portal.dao.orm.hibernate.IntegerType" />
+		<property name="kafkaGroupId" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+	</class>
+	<class name="it.acsoftware.brokerportlet.model.impl.BrokerMessageListenerImpl" table="LiOT_BrokerMessageListener">
+		<cache usage="read-write" />
+		<id name="brokerMessageListenerId" type="long">
+			<generator class="assigned" />
+		</id>
+		<property name="groupId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		<property name="companyId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		<property name="userId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		<property name="userName" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="createDate" type="org.hibernate.type.TimestampType" />
+		<property name="modifiedDate" type="org.hibernate.type.TimestampType" />
+		<property name="name" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="description" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="brokerId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		<property name="topics" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="type" type="com.liferay.portal.dao.orm.hibernate.StringType" column="type_" />
+		<property name="messageBusDestination" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+	</class>
+</hibernate-mapping>

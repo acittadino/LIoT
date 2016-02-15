@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<!DOCTYPE liferay-portlet-app PUBLIC "-//Liferay//DTD Portlet Application 6.2.0//EN" "http://www.liferay.com/dtd/liferay-portlet-app_6_2_0.dtd">
+
+<liferay-portlet-app>
+	
+	<portlet>
+		<portlet-name>apache-spark-manager</portlet-name>
+		<icon>/icon.png</icon>
+		<configuration-action-class>it.acsoftware.apachesparkmanager.actions.ConfigurationActionImpl</configuration-action-class>
+		<control-panel-entry-category>
+			IOT
+		</control-panel-entry-category>
+		<control-panel-entry-weight>0</control-panel-entry-weight>
+		<preferences-company-wide>true</preferences-company-wide>
+		<preferences-unique-per-layout>false</preferences-unique-per-layout>
+		<preferences-owned-by-group>false</preferences-owned-by-group>
+		<use-default-template>true</use-default-template>
+		<header-portlet-css>/css/main.css</header-portlet-css>
+		<footer-portlet-javascript>
+			/js/main.js
+		</footer-portlet-javascript>
+		<css-class-wrapper>
+			apache-spark-manager-portlet
+		</css-class-wrapper>
+		<add-default-resource>true</add-default-resource>
+	</portlet>
+	<role-mapper>
+		<role-name>administrator</role-name>
+		<role-link>Administrator</role-link>
+	</role-mapper>
+	<role-mapper>
+		<role-name>guest</role-name>
+		<role-link>Guest</role-link>
+	</role-mapper>
+	<role-mapper>
+		<role-name>power-user</role-name>
+		<role-link>Power User</role-link>
+	</role-mapper>
+	<role-mapper>
+		<role-name>user</role-name>
+		<role-link>User</role-link>
+	</role-mapper>
+</liferay-portlet-app>

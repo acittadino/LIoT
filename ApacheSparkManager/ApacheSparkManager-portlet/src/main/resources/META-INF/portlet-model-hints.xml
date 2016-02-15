@@ -1,0 +1,33 @@
+<?xml version="1.0"?>
+
+<model-hints>
+	<model name="it.acsoftware.apachesparkmanager.model.JobDateSchedule">
+		<field name="jobDateScheduleId" type="long" />
+		<field name="groupId" type="long" />
+		<field name="companyId" type="long" />
+		<field name="userId" type="long" />
+		<field name="userName" type="String" />
+		<field name="createDate" type="Date" />
+		<field name="modifiedDate" type="Date" />
+		<field name="scheduleName" type="String" />
+		<field name="chronExpression" type="String" />
+		<field name="params" type="String" />
+		<field name="jarName" type="String" />
+		<field name="mainClass" type="String" />
+		<field name="active" type="Boolean" />
+	</model>
+	<model name="it.acsoftware.apachesparkmanager.model.JobEventSchedule">
+		<field name="jobEventScheduleId" type="long" />
+		<field name="groupId" type="long" />
+		<field name="companyId" type="long" />
+		<field name="userId" type="long" />
+		<field name="userName" type="String" />
+		<field name="createDate" type="Date" />
+		<field name="modifiedDate" type="Date" />
+		<field name="eventName" type="String" />
+		<field name="params" type="String" />
+		<field name="jarName" type="String" />
+		<field name="mainClass" type="String" />
+		<field name="active" type="Boolean" />
+	</model>
+</model-hints>

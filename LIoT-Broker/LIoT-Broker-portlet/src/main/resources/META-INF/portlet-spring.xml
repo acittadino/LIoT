@@ -1,0 +1,10 @@
+<?xml version="1.0"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" default-destroy-method="destroy" default-init-method="afterPropertiesSet" xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+	<bean id="it.acsoftware.brokerportlet.service.BrokerLocalService" class="it.acsoftware.brokerportlet.service.impl.BrokerLocalServiceImpl" />
+	<bean id="it.acsoftware.brokerportlet.service.persistence.BrokerPersistence" class="it.acsoftware.brokerportlet.service.persistence.BrokerPersistenceImpl" parent="basePersistence" />
+	<bean id="it.acsoftware.brokerportlet.service.BrokerMessageListenerLocalService" class="it.acsoftware.brokerportlet.service.impl.BrokerMessageListenerLocalServiceImpl" />
+	<bean id="it.acsoftware.brokerportlet.service.persistence.BrokerMessageListenerPersistence" class="it.acsoftware.brokerportlet.service.persistence.BrokerMessageListenerPersistenceImpl" parent="basePersistence" />
+	<bean id="it.acsoftware.brokerportlet.service.BrokersManagerLocalService" class="it.acsoftware.brokerportlet.service.impl.BrokersManagerLocalServiceImpl" />
+	<bean id="it.acsoftware.brokerportlet.service.BrokersManagerService" class="it.acsoftware.brokerportlet.service.impl.BrokersManagerServiceImpl" />
+</beans>

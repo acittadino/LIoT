@@ -1,0 +1,51 @@
+<%@page import="it.acsoftware.apachesparkmanager.permission.JobDateSchedulePermission"%>
+<%@ include file="/html/apachesparkmanager/init.jsp"%>
+<%
+	List<JobDateSchedule> jobDateScheduled = JobDateScheduleLocalServiceUtil.findByCompanyId(themeDisplay.getCompanyId());
+%>
+
+<portlet:renderURL var="addJobDateScheduleURL">
+	<portlet:param name="mvcPath" value="/html/apachesparkmanager/tabs/scheduleDate.jsp"/>
+</portlet:renderURL>
+
+<div align="right">
+	<aui:button cssClass="btn btn-primary" type="button" href="<%=addJobDateScheduleURL.toString() %>" value="it.acsoftware.apachesparkmanager.label.addDateSchedule"/>
+</div>
+
+<liferay-ui:search-container 
+		emptyResultsMessage='<%="it.acsoftware.apachesparkmanager.label.emptyDateSchedule"%>' deltaConfigurable="false" delta="20">
+			<liferay-ui:search-container-results results="<%= jobDateScheduled %>"/>
+			<liferay-ui:search-container-row className="it.acsoftware.apachesparkmanager.model.JobDateSchedule" modelVar="jds" >
+				<liferay-ui:search-container-column-text value="<%=jds.getScheduleName()%>" name="it.acsoftware.apachesparkmanager.label.scheduleName" />
+				<liferay-ui:search-container-column-text value="<%=jds.getChronExpression()%>" name="it.acsoftware.apachesparkmanager.label.cronExpression" />
+				<liferay-ui:search-container-column-text value="<%=jds.getJarName()%>" name="it.acsoftware.apachesparkmanager.label.jarName" />
+				<liferay-ui:search-container-column-text value="<%=jds.getMainClass()%>" name="it.acsoftware.apachesparkmanager.label.mainClass" />
+				
+				
+				<liferay-ui:search-container-column-text>
+					<liferay-ui:icon-menu >
+						<c:if test="<%=JobDateSchedulePermission.contains(permissionChecker, jds, ActionKeys.UPDATE) %>">
+							<portlet:renderURL var="editJobEventScheduleURL">
+								<portlet:param name="mvcPath" value="/html/apachesparkmanager/tabs/scheduleDate.jsp"/>
+								<portlet:param name="jobDateScheduleId" value="<%=String.valueOf(jds.getJobDateScheduleId())%>"/>
+							</portlet:renderURL>
+							<liferay-ui:icon image="edit" message="it.acsoftware.apachesparkmanager.label.edit" url="<%=editJobEventScheduleURL.toString()%>"/>
+						</c:if>
+						<c:if test="<%=JobDateSchedulePermission.contains(permissionChecker, jds, ActionKeys.DELETE) %>">
+							<portlet:actionURL var="deleteScheduledDateURL" name="deleteScheduledDate">
+								<portlet:param name="jobDateScheduleId" value="<%=String.valueOf(jds.getJobDateScheduleId())%>"/>
+							</portlet:actionURL>
+							<liferay-ui:icon-delete message="it.acsoftware.apachesparkmanager.label.delete" url="<%=deleteScheduledDateURL.toString()%>"/>
+						</c:if>
+						
+						<c:if test="<%=JobDateSchedulePermission.contains(permissionChecker, jds, ActionKeys.PERMISSIONS) %>">
+							<liferay-security:permissionsURL modelResource="<%=JobDateSchedule.class.getName()%>" modelResourceDescription='<%="JobDateSchedule Permission"%>'
+											resourcePrimKey="<%=Long.toString(jds.getJobDateScheduleId())%>"
+											windowState="<%=LiferayWindowState.POP_UP.toString() %>" var="permissionsEntryURL" />
+							<liferay-ui:icon image="permissions" url="<%=permissionsEntryURL.toString()%>" useDialog="true" method="get"  />
+						</c:if>
+					</liferay-ui:icon-menu>
+				</liferay-ui:search-container-column-text>
+			</liferay-ui:search-container-row>
+		<liferay-ui:search-iterator searchContainer="<%=searchContainer %>" type="more" paginate="true"/>
+	</liferay-ui:search-container>	

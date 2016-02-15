@@ -1,0 +1,10 @@
+.metadata/*
+ApacheSparkManager/.project
+ApacheSparkManager/.settings
+LIoT/.project
+LIoT/.settings
+LIoT-Broker/.project
+LIoT-Broker/.settings
+LIoT-examples/.project
+LIoT-examples/.settings
+

@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" default-destroy-method="destroy" default-init-method="afterPropertiesSet" xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+	<bean id="it.acsoftware.apachesparkmanager.service.ApacheSparkManagerLocalService" class="it.acsoftware.apachesparkmanager.service.impl.ApacheSparkManagerLocalServiceImpl" />
+	<bean id="it.acsoftware.apachesparkmanager.service.ApacheSparkManagerService" class="it.acsoftware.apachesparkmanager.service.impl.ApacheSparkManagerServiceImpl" />
+	<bean id="it.acsoftware.apachesparkmanager.service.JobDateScheduleLocalService" class="it.acsoftware.apachesparkmanager.service.impl.JobDateScheduleLocalServiceImpl" />
+	<bean id="it.acsoftware.apachesparkmanager.service.JobDateScheduleService" class="it.acsoftware.apachesparkmanager.service.impl.JobDateScheduleServiceImpl" />
+	<bean id="it.acsoftware.apachesparkmanager.service.persistence.JobDateSchedulePersistence" class="it.acsoftware.apachesparkmanager.service.persistence.JobDateSchedulePersistenceImpl" parent="basePersistence" />
+	<bean id="it.acsoftware.apachesparkmanager.service.JobEventScheduleLocalService" class="it.acsoftware.apachesparkmanager.service.impl.JobEventScheduleLocalServiceImpl" />
+	<bean id="it.acsoftware.apachesparkmanager.service.JobEventScheduleService" class="it.acsoftware.apachesparkmanager.service.impl.JobEventScheduleServiceImpl" />
+	<bean id="it.acsoftware.apachesparkmanager.service.persistence.JobEventSchedulePersistence" class="it.acsoftware.apachesparkmanager.service.persistence.JobEventSchedulePersistenceImpl" parent="basePersistence" />
+</beans>

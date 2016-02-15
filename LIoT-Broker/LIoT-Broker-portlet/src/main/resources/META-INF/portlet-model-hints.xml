@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+
+<model-hints>
+	<model name="it.acsoftware.brokerportlet.model.Broker">
+		<field name="brokerId" type="long" />
+		<field name="groupId" type="long" />
+		<field name="companyId" type="long" />
+		<field name="userId" type="long" />
+		<field name="userName" type="String" />
+		<field name="createDate" type="Date" />
+		<field name="modifiedDate" type="Date" />
+		<field name="name" type="String" />
+		<field name="protocol" type="String" />
+		<field name="url" type="String" />
+		<field name="port" type="String" />
+		<field name="description" type="String" />
+		<field name="type" type="String" />
+		<field name="connectionUsername" type="String" />
+		<field name="connectionPassword" type="String" />
+		<field name="topics" type="String" />
+		<field name="customProps" type="String" />
+		<field name="sslEnabled" type="Boolean" />
+		<field name="sslSecret" type="String" />
+		<field name="sslCertificateUUid" type="String" />
+		<field name="startAtStartup" type="Boolean" />
+		<field name="mqttClientId" type="String" />
+		<field name="mqttQos" type="int" />
+		<field name="mqttCleanSession" type="Boolean" />
+		<field name="kafkaZookeeperHost" type="String" />
+		<field name="kafkaThreadsPerTopic" type="int" />
+		<field name="kafkaGroupId" type="String" />
+	</model>
+	<model name="it.acsoftware.brokerportlet.model.BrokerMessageListener">
+		<field name="brokerMessageListenerId" type="long" />
+		<field name="groupId" type="long" />
+		<field name="companyId" type="long" />
+		<field name="userId" type="long" />
+		<field name="userName" type="String" />
+		<field name="createDate" type="Date" />
+		<field name="modifiedDate" type="Date" />
+		<field name="name" type="String" />
+		<field name="description" type="String" />
+		<field name="brokerId" type="long" />
+		<field name="topics" type="String" />
+		<field name="type" type="String" />
+		<field name="messageBusDestination" type="String" />
+	</model>
+</model-hints>

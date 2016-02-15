@@ -1,0 +1,86 @@
+<?xml version="1.0"?>
+
+<entity-mappings xmlns="http://java.sun.com/xml/ns/persistence/orm" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" version="1.0" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence/orm http://java.sun.com/xml/ns/persistence/orm_1_0.xsd">
+	<persistence-unit-metadata>
+		<xml-mapping-metadata-complete/>
+		<persistence-unit-defaults>
+			<access>PROPERTY</access>
+		</persistence-unit-defaults>
+	</persistence-unit-metadata>
+	<mapped-superclass class="it.acsoftware.brokerportlet.model.impl.BrokerModelImpl">
+		<attributes>
+			<id name="brokerId" />
+			<basic name="groupId" />
+			<basic name="companyId" />
+			<basic name="userId" />
+			<basic name="userName" />
+			<basic name="createDate">
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<basic name="modifiedDate">
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<basic name="name" />
+			<basic name="protocol" />
+			<basic name="url" />
+			<basic name="port" />
+			<basic name="description" />
+			<basic name="type">
+				<column name="TYPE_" />
+			</basic>
+			<basic name="connectionUsername" />
+			<basic name="connectionPassword" />
+			<basic name="topics" />
+			<basic name="customProps" />
+			<basic name="sslEnabled" />
+			<basic name="sslSecret" />
+			<basic name="sslCertificateUUid" />
+			<basic name="startAtStartup" />
+			<basic name="mqttClientId" />
+			<basic name="mqttQos" />
+			<basic name="mqttCleanSession" />
+			<basic name="kafkaZookeeperHost" />
+			<basic name="kafkaThreadsPerTopic" />
+			<basic name="kafkaGroupId" />
+			<transient name="modelAttributes" />
+			<transient name="primaryKey" />
+			<transient name="primaryKeyObj" />
+			<transient name="userUuid" />
+		</attributes>
+	</mapped-superclass>
+	<mapped-superclass class="it.acsoftware.brokerportlet.model.impl.BrokerMessageListenerModelImpl">
+		<attributes>
+			<id name="brokerMessageListenerId" />
+			<basic name="groupId" />
+			<basic name="companyId" />
+			<basic name="userId" />
+			<basic name="userName" />
+			<basic name="createDate">
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<basic name="modifiedDate">
+				<temporal>TIMESTAMP</temporal>
+			</basic>
+			<basic name="name" />
+			<basic name="description" />
+			<basic name="brokerId" />
+			<basic name="topics" />
+			<basic name="type">
+				<column name="TYPE_" />
+			</basic>
+			<basic name="messageBusDestination" />
+			<transient name="modelAttributes" />
+			<transient name="primaryKey" />
+			<transient name="primaryKeyObj" />
+			<transient name="userUuid" />
+		</attributes>
+	</mapped-superclass>
+	<entity class="it.acsoftware.brokerportlet.model.impl.BrokerImpl" name="Broker">
+		<table name="LiOT_Broker" />
+		<attributes />
+	</entity>
+	<entity class="it.acsoftware.brokerportlet.model.impl.BrokerMessageListenerImpl" name="BrokerMessageListener">
+		<table name="LiOT_BrokerMessageListener" />
+		<attributes />
+	</entity>
+</entity-mappings>

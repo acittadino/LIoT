@@ -1,0 +1,26 @@
+<%@ include file="/html/apachesparkmanager/init.jsp"%>
+
+
+<portlet:actionURL name="scheduleJob" var="scheduleJobURL" windowState="<%=WindowState.NORMAL.toString() %>"/>
+
+<c:choose>
+<c:when test="<%=!error %>">
+	<aui:form method="post" action="<%=scheduleJobURL.toString() %>">
+		<aui:select name="name" label="Job">
+			
+		<%	//variable inherited from jars.jsp
+			for(int i = 0; i < jarsList.size();i++){ %>
+				<aui:option value="<%=jarsList.get(i) %>" label="<%=jarsList.get(i) %>"/>
+			<%} %>
+		</aui:select>
+		<aui:input name="contextPath"/>
+		<aui:input name="inputParams"/>
+		<aui:input name="synch" type="radio" value="true" label="Synch"/>
+		<aui:input name="synch" type="radio" value="false" label="Asynch" checked="true"/>
+		<aui:button type="submit"/>
+	</aui:form>
+</c:when>
+<c:otherwise>
+	Server unreachable,please check it!
+</c:otherwise>
+</c:choose>

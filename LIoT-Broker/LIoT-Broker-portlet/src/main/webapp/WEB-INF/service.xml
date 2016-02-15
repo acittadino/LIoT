@@ -1,0 +1,126 @@
+<!DOCTYPE service-builder PUBLIC "-//Liferay//DTD Service Builder 6.2.0//EN" "http://www.liferay.com/dtd/liferay-service-builder_6_2_0.dtd">
+
+<service-builder package-path="it.acsoftware.brokerportlet">
+	<namespace>LiOT</namespace>
+	
+	<entity name="BrokersManager" local-service="true" remote-service="true">
+	</entity>
+	
+	<entity name="Broker" local-service="true" remote-service="false" >
+
+		<!-- PK fields -->
+
+		<column name="brokerId" type="long" primary="true" />
+
+		<!-- Group instance -->
+
+		<column name="groupId" type="long" />
+
+		<!-- Audit fields -->
+
+		<column name="companyId" type="long" />
+		<column name="userId" type="long" />
+		<column name="userName" type="String" />
+		<column name="createDate" type="Date" />
+		<column name="modifiedDate" type="Date" />
+
+		<!-- Other fields -->
+
+		<column name="name" type="String" />
+		<column name="protocol" type="String"/>
+		<column name="url" type="String" />
+		<column name="port" type="String" />
+		<column name="description" type="String" />
+		<column name="type" type="String" />
+
+		<column name="connectionUsername" type="String" />
+		<column name="connectionPassword" type="String" />
+
+		<!-- Comma separated list -->
+		<column name="topics" type="String" />
+		<column name="customProps" type="String" />
+
+		<column name="sslEnabled" type="Boolean" />
+		<column name="sslSecret" type="String" />
+		<column name="sslCertificateUUid" type="String" />
+		<column name="startAtStartup" type="Boolean"></column>
+
+		<!-- Mqtt base fields -->
+		<column name="mqttClientId" type="String"></column>
+		<column name="mqttQos" type="int"></column>
+		<column name="mqttCleanSession" type="Boolean"></column>
+
+		<!-- Kafka base fields -->
+		<column name="kafkaZookeeperHost" type="String"></column>
+		<column name="kafkaThreadsPerTopic" type="int"></column>
+		<column name="kafkaGroupId" type="String"></column>
+		
+		<!-- Order -->
+
+		<order by="asc">
+			<order-column name="name" />
+		</order>
+
+		<!-- Finder methods -->
+
+		<finder name="Name" return-type="Broker" unique="true">
+			<finder-column name="companyId" />
+			<finder-column name="name" />
+		</finder>
+
+		<finder name="Company" return-type="Collection">
+			<finder-column name="companyId" />
+		</finder>
+
+	</entity>
+
+	<entity name="BrokerMessageListener" local-service="true"
+		remote-service="false">
+		<!-- PK fields -->
+
+		<column name="brokerMessageListenerId" type="long" primary="true" />
+
+		<!-- Group instance -->
+
+		<column name="groupId" type="long" />
+
+		<!-- Audit fields -->
+
+		<column name="companyId" type="long" />
+		<column name="userId" type="long" />
+		<column name="userName" type="String" />
+		<column name="createDate" type="Date" />
+		<column name="modifiedDate" type="Date" />
+
+		<!-- Other fields -->
+		<column name="name" type="String" />
+		<column name="description" type="String"/>
+		<column name="brokerId" type="long" />
+		<column name="topics" type="String"/>
+		<column name="type" type="String"/>
+		<column name="messageBusDestination" type="String"/>
+
+		<finder name="Company" return-type="Collection">
+			<finder-column name="companyId" />
+		</finder>
+		
+		<finder name="BrokerId" return-type="Collection">
+			<finder-column name="brokerId" />
+		</finder>
+		
+		<finder name="BrokerIdAndType" return-type="Collection">
+			<finder-column name="brokerId" />
+			<finder-column name="type" />
+		</finder>
+		
+		<finder name="Name" return-type="BrokerMessageListener" unique="true">
+			<finder-column name="companyId" />
+			<finder-column name="name" />
+		</finder>
+		
+	</entity>
+
+	<exceptions>
+		<exception>BeanValidation</exception>
+	</exceptions>
+</service-builder>

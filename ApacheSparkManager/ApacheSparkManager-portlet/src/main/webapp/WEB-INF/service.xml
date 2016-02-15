@@ -1,0 +1,75 @@
+<!DOCTYPE service-builder PUBLIC "-//Liferay//DTD Service Builder 6.2.0//EN" "http://www.liferay.com/dtd/liferay-service-builder_6_2_0.dtd">
+
+<service-builder package-path="it.acsoftware.apachesparkmanager">
+	<namespace>ApacheSparkManager</namespace>
+	
+	<entity name="ApacheSparkManager" local-service="true" remote-service="true">
+	</entity>
+	
+	<entity name="JobEventSchedule" local-service="true" remote-service="true">
+		<column name="jobEventScheduleId" type="long" primary="true" />
+		
+		<!-- Group instance -->
+
+		<column name="groupId" type="long" />
+
+		<!-- Audit fields -->
+
+		<column name="companyId" type="long" />
+		<column name="userId" type="long" />
+		<column name="userName" type="String" />
+		<column name="createDate" type="Date" />
+		<column name="modifiedDate" type="Date" />
+		
+		<column name="eventName" type="String"/>
+		<column name="params" type="String"/>
+		<column name="jarName" type="String"/>
+		<column name="mainClass" type="String"/>
+		<column name="active" type="Boolean" />
+		
+		<order>
+			<order-column name="eventName" />
+		</order>
+			
+		<finder return-type="Collection" name="eventName">
+			<finder-column name="companyId"/>
+			<finder-column name="eventName" case-sensitive="false"/>
+		</finder>
+		
+		<finder return-type="Collection" name="companyId" >
+			<finder-column name="companyId"/>
+		</finder>
+		
+	</entity>
+	<entity name="JobDateSchedule" local-service="true" remote-service="true">
+		<column name="jobDateScheduleId" type="long" primary="true" />
+		
+		<!-- Group instance -->
+
+		<column name="groupId" type="long" />
+		
+		<!-- Audit fields -->
+
+		<column name="companyId" type="long" />
+		<column name="userId" type="long" />
+		<column name="userName" type="String" />
+		<column name="createDate" type="Date" />
+		<column name="modifiedDate" type="Date" />
+		
+		<column name="scheduleName" type="String" />
+		<column name="chronExpression" type="String"/>
+		<column name="params" type="String"/>
+		<column name="jarName" type="String"/>
+		<column name="mainClass" type="String"/>
+		<column name="active" type="Boolean" />
+		
+		<finder return-type="Collection" name="companyId" >
+			<finder-column name="companyId"/>
+		</finder>
+	</entity>
+	
+	<exceptions>
+		<exception>BeanValidation</exception>
+	</exceptions>
+	
+</service-builder>

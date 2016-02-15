@@ -1,0 +1,43 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN" "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping default-lazy="false" auto-import="false">
+	<import class="it.acsoftware.apachesparkmanager.model.ApacheSparkManager" />
+	<import class="it.acsoftware.apachesparkmanager.model.JobDateSchedule" />
+	<import class="it.acsoftware.apachesparkmanager.model.JobEventSchedule" />
+	<class name="it.acsoftware.apachesparkmanager.model.impl.JobDateScheduleImpl" table="ApacheSparkManager_JobDateSchedule">
+		<cache usage="read-write" />
+		<id name="jobDateScheduleId" type="long">
+			<generator class="assigned" />
+		</id>
+		<property name="groupId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		<property name="companyId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		<property name="userId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		<property name="userName" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="createDate" type="org.hibernate.type.TimestampType" />
+		<property name="modifiedDate" type="org.hibernate.type.TimestampType" />
+		<property name="scheduleName" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="chronExpression" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="params" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="jarName" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="mainClass" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="active" type="com.liferay.portal.dao.orm.hibernate.BooleanType" column="active_" />
+	</class>
+	<class name="it.acsoftware.apachesparkmanager.model.impl.JobEventScheduleImpl" table="ApacheSparkManager_JobEventSchedule">
+		<cache usage="read-write" />
+		<id name="jobEventScheduleId" type="long">
+			<generator class="assigned" />
+		</id>
+		<property name="groupId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		<property name="companyId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		<property name="userId" type="com.liferay.portal.dao.orm.hibernate.LongType" />
+		<property name="userName" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="createDate" type="org.hibernate.type.TimestampType" />
+		<property name="modifiedDate" type="org.hibernate.type.TimestampType" />
+		<property name="eventName" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="params" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="jarName" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="mainClass" type="com.liferay.portal.dao.orm.hibernate.StringType" />
+		<property name="active" type="com.liferay.portal.dao.orm.hibernate.BooleanType" column="active_" />
+	</class>
+</hibernate-mapping>
