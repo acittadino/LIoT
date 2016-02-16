@@ -17,7 +17,7 @@ Those are few things that you can do with this plugin, but this is the starting 
 
 # Environment Setup
 
-First of all, before we go deeper, let’s introduce which technologies we have used:
+Let’s introduce which technologies we have used:
 
 •	Liferay 6.2 ce GA 4 (updating tomcat to a version supporting web socket)
 •	Mosquitto Broker
