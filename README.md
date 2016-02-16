@@ -33,7 +33,9 @@ Keep track of all technical info (addresses and port) of spark and brokers becau
 The LIoT plugin comes with 2 portlet projects and 1 plugin ext:
 
 •	LIoT-ext: is very simple, its scope is to add a new section inside the control panel called “IoT”
+
 •	ApacheSparkManager-portlet: is the portlet that interacts with Apache Spark Job Server
+
 •	LioT-Broker: is the portlet in which you can define brokers and how to dispatch messages.
 
 If you deploy all plugins at once, and after the deploy receive some exceptions please restart liferay.
