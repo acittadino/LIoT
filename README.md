@@ -43,6 +43,6 @@ If you deploy all plugins at once, and after the deploy receive some exceptions 
 This project requires, for some functionalities (broker log), websocket libs, so if your container doesn’t support websockets please update it or install a new container supporting them. Nevertheless, this is an important feature you can still run the plugin without web sockets support, some real-time functionalities such as: broker real-time view will not work.
 
 # More Info
-Please refer to the manual or tutorial video or If you need more support please contact me at: aristide.cittadino@acsoftware.it
+Please refer to the manual in "documentation" folder or tutorial video or If you need more support please contact me at: aristide.cittadino@acsoftware.it
 
 
