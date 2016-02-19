@@ -6,7 +6,6 @@ import it.acsoftware.brokerportlet.model.Broker;
 
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Map;
 import java.util.Properties;
@@ -28,7 +27,7 @@ import com.liferay.portal.kernel.log.LogFactoryUtil;
 public class KafkaBrokerService extends BrokerServiceImpl {
 	private Log log = LogFactoryUtil.getLog(KafkaBrokerService.class);
 
-	private final ConsumerConnector consumer;
+	private ConsumerConnector consumer;
 	private int nThread;
 	private ExecutorService executor;
 	private List<KafkaConsumerThread> threads;
@@ -90,9 +89,9 @@ public class KafkaBrokerService extends BrokerServiceImpl {
 
 	public void run() {
 		Map<String, Integer> topicCountMap = new HashMap<String, Integer>();
-		Iterator<String> it = toNotify.keySet().iterator();
-		while (it.hasNext()) {
-			String topic = it.next();
+		String[] topics = this.b.getTopics().split(";");
+		for (int i = 0; i < topics.length;i++) {
+			String topic = topics[i];
 			topicCountMap.put(topic, new Integer(nThread));
 
 			Map<String, List<KafkaStream<byte[], byte[]>>> consumerMap = consumer
@@ -133,6 +132,10 @@ public class KafkaBrokerService extends BrokerServiceImpl {
 
 	@Override
 	protected void doStart() throws BrokerServiceException {
+		if(consumer == null)
+			this.consumer = kafka.consumer.Consumer
+			.createJavaConsumerConnector(createConsumerConfig(props));
+		
 		Thread t = new Thread(this);
 		t.start();
 		running = true;
@@ -146,6 +149,8 @@ public class KafkaBrokerService extends BrokerServiceImpl {
 			Thread t = new Thread(c);
 			try {
 				t.join();
+				consumer.shutdown();
+				consumer = null;
 			} catch (Exception e) {
 				logger.info("Error while stopping thread: " + e.getMessage());
 			}
