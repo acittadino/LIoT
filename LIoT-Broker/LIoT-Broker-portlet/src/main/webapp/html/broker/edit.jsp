@@ -171,7 +171,7 @@
 				<liferay-ui:panel
 					title="Kafka Properties" state="<%=panelDefaultState %>" cssClass="hide KAFKAProps brokerProps">
 					<aui:field-wrapper cssClass="hide brokerField KAFKAField">
-						<aui:input name="KAFKA-zookeperHost"
+						<aui:input name="KAFKA-zookeeperHost"
 							label="it.acsoftware.brokerportlet.label.broker.kafka.zookeeperHost"
 							required="true" value="<%=b.getKafkaZookeeperHost()%>" />
 					</aui:field-wrapper>
