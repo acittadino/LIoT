@@ -6,8 +6,11 @@ The other crucial idea is to control a Big Data environment such as Apache Spark
 From the control panel you can:
 
 •	Insert a new connection to a broker: specifying properties such as topics, or custom properties. The available brokers are:
-  o	Mqtt
-  o	Kafka
+
+    o	Mqtt
+  
+    o	Kafka
+    
 •	Define a Broker Listener, a way to decide where data coming from broker must to be sent. At now the only broker listener is Message Bus. This means that at the beginning of your project you can connect liferay to a broker and receive directly on the MESSAGE BUS all data coming from it.
 
 •	Setup Apache Spark by loading jars, schedule jobs on the fly, or schedule jobs on events or dates.
