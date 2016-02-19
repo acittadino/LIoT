@@ -7,6 +7,7 @@ import it.acsoftware.brokerportlet.permission.BrokerMessageListenerPermission;
 import it.acsoftware.brokerportlet.permission.BrokerModelPermission;
 import it.acsoftware.brokerportlet.service.BrokerLocalServiceUtil;
 import it.acsoftware.brokerportlet.service.BrokerMessageListenerLocalServiceUtil;
+import it.acsoftware.brokerportlet.util.BrokersServicesManager;
 
 import java.io.IOException;
 import java.util.Date;
@@ -154,10 +155,20 @@ public class BrokerMessageListenerPortlet extends MVCPortlet {
 			}
 		}
 	}
-	
-	public void deleteMessageListener(ActionRequest request,ActionResponse response) throws Exception{
-		long brokerMessageListenerId = ParamUtil.getLong(request, "brokerMessageListenerId");
-		BrokerMessageListenerLocalServiceUtil.deleteBrokerMessageListener(brokerMessageListenerId);
+
+	public void deleteMessageListener(ActionRequest request,
+			ActionResponse response) throws Exception {
+		long brokerMessageListenerId = ParamUtil.getLong(request,
+				"brokerMessageListenerId");
+		BrokerMessageListener bml = BrokerMessageListenerLocalServiceUtil
+				.deleteBrokerMessageListener(brokerMessageListenerId);
+		String[] topic = bml.getTopics().split(";");
+		for (int i = 0; i < topic.length; i++) {
+			// unregistering the service using the entity id
+			BrokersServicesManager.getInstance().unregister(topic[i],
+					bml.getBrokerId(),
+					String.valueOf(bml.getBrokerMessageListenerId()));
+		}
 	}
 
 }

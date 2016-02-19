@@ -62,10 +62,12 @@ public interface BrokersManagerService extends BaseService, InvokableService {
         throws it.acsoftware.brokerportlet.BrokerServiceException;
 
     public void register(java.lang.String topic, long brokerId,
-        java.lang.String bmlsClass, java.lang.String servletContextName);
+        java.lang.String bmlsClass, java.lang.String servletContextName,
+        java.lang.String brokerMessageListenerId);
 
     public void unregister(java.lang.String topic, long brokerId,
-        java.lang.String bmlsClass, java.lang.String servletContextName);
+        java.lang.String bmlsClass, java.lang.String servletContextName,
+        java.lang.String brokerMessageListenerId);
 
     @Transactional(propagation = Propagation.SUPPORTS, readOnly = true)
     public java.lang.Boolean isRunning(long brokerId);

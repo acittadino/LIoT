@@ -21,7 +21,8 @@ import com.liferay.portal.kernel.log.Log;
 import com.liferay.portal.kernel.log.LogFactoryUtil;
 
 public class BrokersServicesManager {
-	private static Log log = LogFactoryUtil.getLog(BrokersServicesManager.class);
+	private static Log log = LogFactoryUtil
+			.getLog(BrokersServicesManager.class);
 
 	private static BrokersServicesManager instance;
 	private HashMap<Long, BrokerServiceImpl> services;
@@ -124,14 +125,16 @@ public class BrokersServicesManager {
 	// use from Remote to instantiate object from another portlet
 	// requires spring bean definition
 	public void register(String topic, long brokerId, String bmlsClass,
-			String servletContextName) {
+			String servletContextName, String brokerMessageListenerId) {
 		if (services.containsKey(brokerId)) {
 			try {
 				Object obj = PortletBeanLocatorUtil.locate(servletContextName,
 						bmlsClass);
-				// We must use reflection because with different class loader 
-				// we cannot check if the obj is a BrokerMessageListenerService instance
-				ExternalBrokerMessageListener externalBml = new ExternalBrokerMessageListener(obj);
+				// We must use reflection because with different class loader
+				// we cannot check if the obj is a BrokerMessageListenerService
+				// instance
+				ExternalBrokerMessageListener externalBml = new ExternalBrokerMessageListener(
+						obj, brokerMessageListenerId);
 				services.get(brokerId).registerToTopic(topic, externalBml);
 			} catch (Exception e) {
 				log.error(e);
@@ -146,14 +149,23 @@ public class BrokersServicesManager {
 		}
 	}
 
+	public void unregister(String topic, long brokerId,
+			String brokerMessageListenerId) {
+		if (services.containsKey(brokerId)) {
+			services.get(brokerId).unregisterToTopic(topic,
+					brokerMessageListenerId);
+		}
+	}
+
 	// use from Remote to instantiate object from another portlet
 	// requires spring bean definition
 	public void unregister(String topic, long brokerId, String bmlsClass,
-			String servletContextName) {
+			String servletContextName, String brokerMessageListenerId) {
 		if (services.containsKey(brokerId)) {
 			Object obj = PortletBeanLocatorUtil.locate(servletContextName,
 					bmlsClass);
-			ExternalBrokerMessageListener externalBml = new ExternalBrokerMessageListener(obj);
+			ExternalBrokerMessageListener externalBml = new ExternalBrokerMessageListener(
+					obj, brokerMessageListenerId);
 			services.get(brokerId).unregisterToTopic(topic, externalBml);
 		}
 	}

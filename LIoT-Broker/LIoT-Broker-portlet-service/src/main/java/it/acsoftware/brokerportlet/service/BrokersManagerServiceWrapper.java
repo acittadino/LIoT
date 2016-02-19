@@ -66,16 +66,18 @@ public class BrokersManagerServiceWrapper implements BrokersManagerService,
 
     @Override
     public void register(java.lang.String topic, long brokerId,
-        java.lang.String bmlsClass, java.lang.String servletContextName) {
+        java.lang.String bmlsClass, java.lang.String servletContextName,
+        java.lang.String brokerMessageListenerId) {
         _brokersManagerService.register(topic, brokerId, bmlsClass,
-            servletContextName);
+            servletContextName, brokerMessageListenerId);
     }
 
     @Override
     public void unregister(java.lang.String topic, long brokerId,
-        java.lang.String bmlsClass, java.lang.String servletContextName) {
+        java.lang.String bmlsClass, java.lang.String servletContextName,
+        java.lang.String brokerMessageListenerId) {
         _brokersManagerService.unregister(topic, brokerId, bmlsClass,
-            servletContextName);
+            servletContextName, brokerMessageListenerId);
     }
 
     @Override

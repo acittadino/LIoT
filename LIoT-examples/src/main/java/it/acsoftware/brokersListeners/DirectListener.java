@@ -35,15 +35,20 @@ import com.liferay.portal.kernel.log.LogFactoryUtil;
 public class DirectListener extends BrokerMessageListenerService {
 	private static Log logger = LogFactoryUtil.getLog(DirectListener.class);
 
+	public DirectListener() {
+		super();
+	}
+
 	@Override
 	public void processMessage(BrokerServiceMessage data) {
 		try {
-			JSONObject obj = JSONFactoryUtil.createJSONObject(new String((byte[]) data.getData()));
+			JSONObject obj = JSONFactoryUtil.createJSONObject(new String(
+					(byte[]) data.getData()));
 			logger.info("--------------------DIRECT LISTENER INCOMING MESSAGE--------------------");
 			logger.info("Topic:" + data.getTopic());
 			logger.info("Value:" + obj.getInt("value"));
-			logger.info("Label:"+obj.getString("label"));
-			logger.info("TimeStamp:"+obj.getLong("timeStamp"));
+			logger.info("Label:" + obj.getString("label"));
+			logger.info("TimeStamp:" + obj.getLong("timeStamp"));
 			Iterator<String> it = data.getParams().keySet().iterator();
 			while (it.hasNext()) {
 				String key = it.next();
@@ -56,8 +61,9 @@ public class DirectListener extends BrokerMessageListenerService {
 		}
 	}
 
-	public static void registerDirectListener(long brokerId, String topic) {
+	public static void registerDirectListener(long brokerId, String topic,
+			String id) {
 		BrokersManagerServiceUtil.register(topic, brokerId,
-				DirectListener.class.getName(), "LIoT-examples-portlet");
+				DirectListener.class.getName(), "LIoT-examples-portlet", id);
 	}
 }

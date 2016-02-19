@@ -67,13 +67,19 @@ public class BrokersManagerServiceUtil {
     }
 
     public static void register(java.lang.String topic, long brokerId,
-        java.lang.String bmlsClass, java.lang.String servletContextName) {
-        getService().register(topic, brokerId, bmlsClass, servletContextName);
+        java.lang.String bmlsClass, java.lang.String servletContextName,
+        java.lang.String brokerMessageListenerId) {
+        getService()
+            .register(topic, brokerId, bmlsClass, servletContextName,
+            brokerMessageListenerId);
     }
 
     public static void unregister(java.lang.String topic, long brokerId,
-        java.lang.String bmlsClass, java.lang.String servletContextName) {
-        getService().unregister(topic, brokerId, bmlsClass, servletContextName);
+        java.lang.String bmlsClass, java.lang.String servletContextName,
+        java.lang.String brokerMessageListenerId) {
+        getService()
+            .unregister(topic, brokerId, bmlsClass, servletContextName,
+            brokerMessageListenerId);
     }
 
     public static java.lang.Boolean isRunning(long brokerId) {

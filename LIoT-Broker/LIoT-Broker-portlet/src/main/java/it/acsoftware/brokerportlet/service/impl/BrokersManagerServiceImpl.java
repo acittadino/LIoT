@@ -39,24 +39,24 @@ public class BrokersManagerServiceImpl extends BrokersManagerServiceBaseImpl {
 	}
 
 	public void register(String topic, long brokerId, String bmlsClass,
-			String servletContextName) {
+			String servletContextName, String brokerMessageListenerId) {
 		BrokersManagerLocalServiceUtil.register(topic, brokerId, bmlsClass,
-				servletContextName);
+				servletContextName, brokerMessageListenerId);
 	}
 
 	public void unregister(String topic, long brokerId, String bmlsClass,
-			String servletContextName) {
+			String servletContextName, String brokerMessageListenerId) {
 		BrokersManagerLocalServiceUtil.unregister(topic, brokerId, bmlsClass,
-				servletContextName);
+				servletContextName, brokerMessageListenerId);
 	}
 
 	public Boolean isRunning(long brokerId) {
 		return BrokersManagerLocalServiceUtil.isRunning(brokerId);
 	}
-	
-	public void sendMessage(long brokerId,byte[] message,HashMap<String,String> params){
+
+	public void sendMessage(long brokerId, byte[] message,
+			HashMap<String, String> params) {
 		BrokersManagerLocalServiceUtil.sendMessage(brokerId, message, params);
 	}
 
-	
 }

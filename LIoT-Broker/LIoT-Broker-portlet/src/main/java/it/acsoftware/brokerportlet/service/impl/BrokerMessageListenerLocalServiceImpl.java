@@ -2,7 +2,10 @@ package it.acsoftware.brokerportlet.service.impl;
 
 import it.acsoftware.brokerportlet.BeanValidationException;
 import it.acsoftware.brokerportlet.NoSuchBrokerMessageListenerException;
+import it.acsoftware.brokerportlet.broker.receivers.BrokerMessageListenerFactory;
+import it.acsoftware.brokerportlet.broker.receivers.BrokerMessageListenerService;
 import it.acsoftware.brokerportlet.model.BrokerMessageListener;
+import it.acsoftware.brokerportlet.service.BrokersManagerLocalServiceUtil;
 import it.acsoftware.brokerportlet.service.base.BrokerMessageListenerLocalServiceBaseImpl;
 
 import java.util.ArrayList;
@@ -63,6 +66,16 @@ public class BrokerMessageListenerLocalServiceImpl extends
 			} catch (Exception e) {
 				logger.error(e);
 			}
+		}
+		
+		//trying to register the broker message listener service
+		//if already present the register method will ignore it
+		String[] topics = bml.getTopics().split(";");
+		for (int j = 0; j < topics.length; j++) {
+			String topic = topics[j];
+			BrokerMessageListenerService b2ml = BrokerMessageListenerFactory
+					.createBrokerToMessageListener(bml);
+			BrokersManagerLocalServiceUtil.register(topic, bml.getBrokerId(), b2ml);
 		}
 		return bml;
 	}

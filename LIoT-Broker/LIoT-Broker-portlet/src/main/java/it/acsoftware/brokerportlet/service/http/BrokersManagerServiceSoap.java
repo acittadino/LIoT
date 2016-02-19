@@ -70,11 +70,11 @@ public class BrokersManagerServiceSoap {
     }
 
     public static void register(java.lang.String topic, long brokerId,
-        java.lang.String bmlsClass, java.lang.String servletContextName)
-        throws RemoteException {
+        java.lang.String bmlsClass, java.lang.String servletContextName,
+        java.lang.String brokerMessageListenerId) throws RemoteException {
         try {
             BrokersManagerServiceUtil.register(topic, brokerId, bmlsClass,
-                servletContextName);
+                servletContextName, brokerMessageListenerId);
         } catch (Exception e) {
             _log.error(e, e);
 
@@ -83,11 +83,11 @@ public class BrokersManagerServiceSoap {
     }
 
     public static void unregister(java.lang.String topic, long brokerId,
-        java.lang.String bmlsClass, java.lang.String servletContextName)
-        throws RemoteException {
+        java.lang.String bmlsClass, java.lang.String servletContextName,
+        java.lang.String brokerMessageListenerId) throws RemoteException {
         try {
             BrokersManagerServiceUtil.unregister(topic, brokerId, bmlsClass,
-                servletContextName);
+                servletContextName, brokerMessageListenerId);
         } catch (Exception e) {
             _log.error(e, e);
 

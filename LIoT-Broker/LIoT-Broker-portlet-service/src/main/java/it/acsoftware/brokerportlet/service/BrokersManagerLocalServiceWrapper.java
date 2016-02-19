@@ -67,9 +67,10 @@ public class BrokersManagerLocalServiceWrapper
 
     @Override
     public void register(java.lang.String topic, long brokerId,
-        java.lang.String bmlsClass, java.lang.String servletContextName) {
+        java.lang.String bmlsClass, java.lang.String servletContextName,
+        java.lang.String brokerMessageListenerId) {
         _brokersManagerLocalService.register(topic, brokerId, bmlsClass,
-            servletContextName);
+            servletContextName, brokerMessageListenerId);
     }
 
     @Override
@@ -80,9 +81,10 @@ public class BrokersManagerLocalServiceWrapper
 
     @Override
     public void unregister(java.lang.String topic, long brokerId,
-        java.lang.String bmlsClass, java.lang.String servletContextName) {
+        java.lang.String bmlsClass, java.lang.String servletContextName,
+        java.lang.String brokerMessageListenerId) {
         _brokersManagerLocalService.unregister(topic, brokerId, bmlsClass,
-            servletContextName);
+            servletContextName, brokerMessageListenerId);
     }
 
     @Override

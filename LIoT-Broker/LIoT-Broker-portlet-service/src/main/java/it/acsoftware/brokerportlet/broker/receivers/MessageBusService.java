@@ -13,6 +13,7 @@ public class MessageBusService extends BrokerMessageListenerService {
 	private BrokerMessageListener bml;
 
 	public MessageBusService(BrokerMessageListener bml) {
+		super(String.valueOf(bml.getBrokerMessageListenerId()));
 		this.bml = bml;
 	}
 
@@ -22,12 +23,12 @@ public class MessageBusService extends BrokerMessageListenerService {
 		m.setDestinationName(bml.getMessageBusDestination());
 		m.setPayload(message.getData());
 		Iterator<String> it = message.getParams().keySet().iterator();
+		HashMap<String, Object> values = new HashMap<String, Object>();
 		while (it.hasNext()) {
 			String key = it.next();
 			Object value = message.getParam(key);
-			m.getValues().put(key, value);
+			values.put(key, value);
 		}
-		HashMap<String,Object> values = new HashMap<String,Object>();
 		values.put("topic", message.getTopic());
 		m.setValues(values);
 		MessageBusUtil.sendMessage(bml.getMessageBusDestination(), m);

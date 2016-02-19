@@ -24,7 +24,7 @@ public class BrokerTrafficWebLogger extends BrokerMessageListenerService {
 	private Session session;
 
 	public BrokerTrafficWebLogger() {
-		super();
+		super("TrafficWebLogger");
 	}
 
 	@OnOpen

@@ -100,7 +100,7 @@ public abstract class AbstractSensorSimulator implements Runnable {
 		// Register in the same portlet a component that receive messages from
 		// the broker
 		// in order to print inside the console the message
-		DirectListener.registerDirectListener(this.brokerId, this.dataTopic);
+		DirectListener.registerDirectListener(this.brokerId, this.dataTopic,"DirectSensorSimulator");
 		
 		stop = false;
 		simulator = new Thread(this);

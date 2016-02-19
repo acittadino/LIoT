@@ -63,7 +63,7 @@ public class BrokersManagerLocalServiceClpInvoker {
 
         _methodParameterTypes31 = new String[] {
                 "java.lang.String", "long", "java.lang.String",
-                "java.lang.String"
+                "java.lang.String", "java.lang.String"
             };
 
         _methodName32 = "register";
@@ -77,7 +77,7 @@ public class BrokersManagerLocalServiceClpInvoker {
 
         _methodParameterTypes33 = new String[] {
                 "java.lang.String", "long", "java.lang.String",
-                "java.lang.String"
+                "java.lang.String", "java.lang.String"
             };
 
         _methodName34 = "unregister";
@@ -151,7 +151,8 @@ public class BrokersManagerLocalServiceClpInvoker {
                 Arrays.deepEquals(_methodParameterTypes31, parameterTypes)) {
             BrokersManagerLocalServiceUtil.register((java.lang.String) arguments[0],
                 ((Long) arguments[1]).longValue(),
-                (java.lang.String) arguments[2], (java.lang.String) arguments[3]);
+                (java.lang.String) arguments[2],
+                (java.lang.String) arguments[3], (java.lang.String) arguments[4]);
 
             return null;
         }
@@ -169,7 +170,8 @@ public class BrokersManagerLocalServiceClpInvoker {
                 Arrays.deepEquals(_methodParameterTypes33, parameterTypes)) {
             BrokersManagerLocalServiceUtil.unregister((java.lang.String) arguments[0],
                 ((Long) arguments[1]).longValue(),
-                (java.lang.String) arguments[2], (java.lang.String) arguments[3]);
+                (java.lang.String) arguments[2],
+                (java.lang.String) arguments[3], (java.lang.String) arguments[4]);
 
             return null;
         }

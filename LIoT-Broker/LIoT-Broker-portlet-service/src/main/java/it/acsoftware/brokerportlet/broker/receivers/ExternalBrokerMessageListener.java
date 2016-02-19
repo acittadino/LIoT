@@ -22,7 +22,8 @@ public class ExternalBrokerMessageListener extends BrokerMessageListenerService 
 	private Object o;
 	private Method m;
 
-	public ExternalBrokerMessageListener(Object obj) {
+	public ExternalBrokerMessageListener(Object obj,String id) {
+		super(id);
 		boolean ok = false;
 		if (obj != null) {
 			Class superClass = obj.getClass().getSuperclass();

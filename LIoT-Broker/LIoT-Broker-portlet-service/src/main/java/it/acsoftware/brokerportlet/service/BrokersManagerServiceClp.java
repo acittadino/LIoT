@@ -54,14 +54,14 @@ public class BrokersManagerServiceClp implements BrokersManagerService {
 
         _methodParameterTypes6 = new String[] {
                 "java.lang.String", "long", "java.lang.String",
-                "java.lang.String"
+                "java.lang.String", "java.lang.String"
             };
 
         _methodName7 = "unregister";
 
         _methodParameterTypes7 = new String[] {
                 "java.lang.String", "long", "java.lang.String",
-                "java.lang.String"
+                "java.lang.String", "java.lang.String"
             };
 
         _methodName8 = "isRunning";
@@ -189,7 +189,8 @@ public class BrokersManagerServiceClp implements BrokersManagerService {
 
     @Override
     public void register(java.lang.String topic, long brokerId,
-        java.lang.String bmlsClass, java.lang.String servletContextName) {
+        java.lang.String bmlsClass, java.lang.String servletContextName,
+        java.lang.String brokerMessageListenerId) {
         try {
             _invokableService.invokeMethod(_methodName6,
                 _methodParameterTypes6,
@@ -200,7 +201,9 @@ public class BrokersManagerServiceClp implements BrokersManagerService {
                     
                 ClpSerializer.translateInput(bmlsClass),
                     
-                ClpSerializer.translateInput(servletContextName)
+                ClpSerializer.translateInput(servletContextName),
+                    
+                ClpSerializer.translateInput(brokerMessageListenerId)
                 });
         } catch (Throwable t) {
             t = ClpSerializer.translateThrowable(t);
@@ -216,7 +219,8 @@ public class BrokersManagerServiceClp implements BrokersManagerService {
 
     @Override
     public void unregister(java.lang.String topic, long brokerId,
-        java.lang.String bmlsClass, java.lang.String servletContextName) {
+        java.lang.String bmlsClass, java.lang.String servletContextName,
+        java.lang.String brokerMessageListenerId) {
         try {
             _invokableService.invokeMethod(_methodName7,
                 _methodParameterTypes7,
@@ -227,7 +231,9 @@ public class BrokersManagerServiceClp implements BrokersManagerService {
                     
                 ClpSerializer.translateInput(bmlsClass),
                     
-                ClpSerializer.translateInput(servletContextName)
+                ClpSerializer.translateInput(servletContextName),
+                    
+                ClpSerializer.translateInput(brokerMessageListenerId)
                 });
         } catch (Throwable t) {
             t = ClpSerializer.translateThrowable(t);

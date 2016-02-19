@@ -46,9 +46,9 @@ public class BrokersManagerLocalServiceImpl extends
 	}
 
 	public void register(String topic, long brokerId, String bmlsClass,
-			String servletContextName) {
+			String servletContextName, String brokerMessageListenerId) {
 		BrokersServicesManager.getInstance().register(topic, brokerId,
-				bmlsClass, servletContextName);
+				bmlsClass, servletContextName,brokerMessageListenerId);
 	}
 
 	public void register(String topic, long brokerId,
@@ -58,9 +58,9 @@ public class BrokersManagerLocalServiceImpl extends
 	}
 
 	public void unregister(String topic, long brokerId, String bmlsClass,
-			String servletContextName) {
+			String servletContextName, String brokerMessageListenerId) {
 		BrokersServicesManager.getInstance().unregister(topic, brokerId,
-				bmlsClass, servletContextName);
+				bmlsClass, servletContextName, brokerMessageListenerId);
 	}
 
 	public void unregister(String topic, long brokerId,
