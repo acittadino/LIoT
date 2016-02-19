@@ -4,6 +4,7 @@ Liferay IoT plugin
 The idea behind this project is to transform liferay in an IoT Technologies manager exploiting its core functionalities such as message bus allowing to connect it to the major streaming technologies or queues.
 The other crucial idea is to control a Big Data environment such as Apache Spark.
 From the control panel you can:
+
 •	Insert a new connection to a broker: specifying properties such as topics, or custom properties. The available brokers are:
   o	Mqtt
   o	Kafka
