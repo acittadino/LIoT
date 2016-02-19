@@ -24,9 +24,13 @@ Those are few things that you can do with this plugin, but this is the starting 
 Let’s introduce which technologies we have used:
 
 •	Liferay 6.2 ce GA 4 (updating tomcat to a version supporting web socket)
+
 •	Mosquitto Broker
+
 •	Apache Kafka 0.8.2.1
+
 •	Apache spark 1.3.1 built for Hadoop 2.4
+
 •	Apache spark job server 0.5.2
 
 The first two technologies are the brokers, the second one is Spark with a Job Server that allows to control it by invoking some rest services.
@@ -35,9 +39,13 @@ Keep track of all technical info (addresses and port) of spark and brokers becau
 Please add the following properties to your portal-ext in order to see control panel IoT icons:
 
 theme.css.fast.load=false
+
 theme.images.fast.load=false
+
 javascript.fast.load=true
+
 javascript.log.enabled=false
+
 layout.template.cache.enabled=false
 
 # Installation
