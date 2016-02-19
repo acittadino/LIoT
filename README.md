@@ -40,6 +40,8 @@ The LIoT plugin comes with 2 portlet projects and 1 plugin ext:
 
 If you deploy all plugins at once, and after the deploy receive some exceptions please restart liferay.
 
+Import main projects inside eclipse as maven project, then import sub projects. Please change the profile info in the parent pom with you liferay installation details
+
 This project requires, for some functionalities (broker log), websocket libs, so if your container doesn’t support websockets please update it or install a new container supporting them. Nevertheless, this is an important feature you can still run the plugin without web sockets support, some real-time functionalities such as: broker real-time view will not work.
 
 # More Info
