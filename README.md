@@ -32,6 +32,14 @@ Let’s introduce which technologies we have used:
 The first two technologies are the brokers, the second one is Spark with a Job Server that allows to control it by invoking some rest services.
 Keep track of all technical info (addresses and port) of spark and brokers because we will put them later inside liferay configuration.
 
+Please add the following properties to your portal-ext in order to see control panel IoT icons:
+
+theme.css.fast.load=false
+theme.images.fast.load=false
+javascript.fast.load=true
+javascript.log.enabled=false
+layout.template.cache.enabled=false
+
 # Installation
 
 The LIoT plugin comes with 2 portlet projects and 1 plugin ext:
